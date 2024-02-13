@@ -4,15 +4,20 @@
     <h3>{{ userAge }}</h3>
     <!-- <h2>{{ user }}</h2> -->
     <button @click="changeAge">Change Age</button>
+    <div>
+      <input type="text" placeholder="First Name" @input="setFirstName" />
+      <input type="text" placeholder="Last Name" @input="setLastName" />
+    </div>
   </section>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 // import { reactive } from 'vue';
 
-const userName = ref('Robin');
 const userAge = ref(22);
+const firstName = ref('');
+const lastName = ref('');
 
 // Reactive only works with Objects
 // An object is a must have
@@ -24,6 +29,18 @@ const userAge = ref(22);
 const changeAge = () => {
   userAge.value++;
 };
+
+function setFirstName(event) {
+  firstName.value = event.target.value;
+}
+
+function setLastName(event) {
+  lastName.value = event.target.value;
+}
+
+const userName = computed(function () {
+  return firstName.value + ' ' + lastName.value;
+});
 
 // setTimeout(function () {
 //   user.name = 'Haas';
