@@ -1,16 +1,28 @@
 <template>
   <section class="container">
-    <h2>{{ userName }}</h2>
+    <h2>{{ user.name }}</h2>
+    <h3>{{ user.age }}</h3>
+    <h2>{{ user }}</h2>
   </section>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+// import { ref } from 'vue';
+import { reactive } from 'vue';
 
-const userName = ref('Robin');
+// const userName = ref('Robin');
+// const userAge = ref(22);
+
+// Reactive only works with Objects
+// An object is a must have
+const user = reactive({
+  name: 'Robin',
+  age: 22,
+});
 
 setTimeout(function () {
-  userName.value = 'Haas';
+  user.name = 'Haas';
+  user.age = 23;
 }, 2000);
 </script>
 
