@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 // import { reactive } from 'vue';
 
 const userAge = ref(22);
@@ -41,6 +41,18 @@ function setLastName(event) {
 const userName = computed(function () {
   return firstName.value + ' ' + lastName.value;
 });
+
+watch([userAge, userName], function (newValues, oldValues) {
+  console.log('old age:', oldValues[0]);
+  console.log('new age:', newValues[0]);
+  console.log('old name:', oldValues[1]);
+  console.log('new name:', newValues[1]);
+});
+
+// watch(userAge, function (newValue, oldValue) {
+//   console.log('old age:', oldValue);
+//   console.log('new age:', newValue);
+// });
 
 // setTimeout(function () {
 //   user.name = 'Haas';
