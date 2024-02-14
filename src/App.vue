@@ -9,10 +9,12 @@
       <input type="text" placeholder="Last Name" ref="lastNameInput" />
       <button @click="setLastName">Set Last Name</button>
     </div>
+    <UserData :userAge="userAge" :lastName="lastName" :firstName="firstName" />
   </section>
 </template>
 
 <script setup>
+import UserData from './components/UserData.vue';
 import { ref, computed, watch } from 'vue';
 // import { reactive } from 'vue';
 
