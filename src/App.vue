@@ -15,7 +15,17 @@
 
 <script setup>
 import UserData from './components/UserData.vue';
-import { ref, computed, watch } from 'vue';
+import {
+  ref,
+  computed,
+  watch,
+  onBeforeMount,
+  onMounted,
+  onBeforeUpdate,
+  onUpdated,
+  onBeforeUnmount,
+  onUnmounted,
+} from 'vue';
 // import { reactive } from 'vue';
 
 const userAge = ref(22);
@@ -62,6 +72,34 @@ watch([userAge, userName], function (newValues, oldValues) {
 //   user.name = 'Haas';
 //   user.age = 23;
 // }, 2000);
+
+////////////////////////////////////////////
+//                Mount                   //
+////////////////////////////////////////////
+
+onBeforeMount(() => {
+  console.log('onBeforeMount');
+});
+
+onMounted(() => {
+  console.log('onMounted');
+});
+
+onBeforeUpdate(() => {
+  console.log('onBeforeUpdate');
+});
+
+onUpdated(() => {
+  console.log('onUpdated');
+});
+
+onBeforeUnmount(() => {
+  console.log('onBeforeUnmount');
+});
+
+onUnmounted(() => {
+  console.log('onUnmounted');
+});
 </script>
 
 <style>
