@@ -5,8 +5,9 @@
     <!-- <h2>{{ user }}</h2> -->
     <button @click="changeAge">Change Age</button>
     <div>
-      <input type="text" placeholder="First Name" @input="setFirstName" />
-      <input type="text" placeholder="Last Name" @input="setLastName" />
+      <input type="text" placeholder="First Name" v-model="firstName" />
+      <input type="text" placeholder="Last Name" ref="lastNameInput" />
+      <button @click="setLastName">Set Last Name</button>
     </div>
   </section>
 </template>
@@ -18,6 +19,7 @@ import { ref, computed, watch } from 'vue';
 const userAge = ref(22);
 const firstName = ref('');
 const lastName = ref('');
+const lastNameInput = ref(null);
 
 // Reactive only works with Objects
 // An object is a must have
@@ -30,12 +32,12 @@ const changeAge = () => {
   userAge.value++;
 };
 
-function setFirstName(event) {
-  firstName.value = event.target.value;
-}
+// function setFirstName(event) {
+//   firstName.value = event.target.value;
+// }
 
-function setLastName(event) {
-  lastName.value = event.target.value;
+function setLastName() {
+  lastName.value = lastNameInput.value.value;
 }
 
 const userName = computed(function () {
